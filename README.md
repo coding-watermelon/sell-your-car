@@ -18,3 +18,22 @@ Providing a REST-Interface to insert car, get all existing cars as well as the d
 **GET** _/cars/:carId_ : Details of one car
 
 **POST** _/cars_ : Create new Car
+
+### Tests
+
+To run the test perform the following steps:
+
+1.  Start the database from the root directory with `docker-compose up database`
+2.  Run the script in _Backend/package.json_ by changing to Backend dir and run the script with
+
+```
+cd Backend
+yarn test
+```
+
+or if you prefer npm
+
+```
+cd Backend
+npm run test
+```
