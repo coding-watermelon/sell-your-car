@@ -11,3 +11,6 @@ script:
   - cd Backend 
   - yarn
   - yarn test
+  - cd ../frontend
+  - yarn
+  - yarn flow
