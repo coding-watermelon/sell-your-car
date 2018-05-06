@@ -88,6 +88,8 @@ describe("Cars ", () => {
         .request(app)
         .get(`${route}/${nonExistingId}`)
         .end((err, res) => {
+          // If there is no car for this id, the car is obviously a teapot
+          // Have mercy with me for this easteregg ;)
           expect(res).to.have.status(418);
           done();
         });
