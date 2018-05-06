@@ -5,7 +5,6 @@ let dbConnection = null;
 
 module.exports = {
   connect: connectToDatabase,
-  disconnect: closeConnectionToDatabase,
   resources: {
     cars
   }
@@ -18,8 +17,4 @@ function connectToDatabase() {
     dbConnection.on("error", reject);
     dbConnection.once("open", resolve);
   });
-}
-
-function closeConnectionToDatabase() {
-  dbConnection.close();
 }
