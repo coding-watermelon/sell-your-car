@@ -1,0 +1,17 @@
+nginx/
+node_modules/
+**/node_modules/
+**/flow-typed/
+database
+dockerfiles
+imageCache
+documentation
+coverage
+build
+.*/
+__*
+**/__*
+**/*conf.js
+**/*.min.js
+**/package.json
+**/dist

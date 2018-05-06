@@ -1,0 +1,23 @@
+{
+  "name": "sell-you-car",
+  "version": "1.0.0",
+  "description": "A sample application that allows to view and add car offers",
+  "main": "index.js",
+  "repository": "https://github.com/PetrykowskiM/sell-your-car.git",
+  "author": "Markus Petrykowski <markus.petrykowski@nexenio.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint ./Backend ./frontend --ext js,jsx",
+    "lint:fix":
+      "echo 'Running Lint and fixing simple errors...' && eslint --fix ./Backend ./frontend --ext js,jsx"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "prettier": "^1.12.1"
+  },
+  "dependencies": {}
+}
