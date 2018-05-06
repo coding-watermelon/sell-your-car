@@ -36,7 +36,7 @@ function getCarById(carId) {
 
 function getAllCars() {
   return new Promise((resolve, reject) => {
-    Car.find(carId, (err, cars) => {
+    Car.find((err, cars) => {
       if (err) return reject(err);
       resolve(cars);
     });
@@ -61,7 +61,9 @@ function saveNewModel(collectionObject) {
   return new Promise((resolve, reject) => {
     collectionObject.save((err, createdCollectionObject) => {
       if (err) return reject(err);
-      resolve(createdCollectionObject);
+      collectionDocument = createdCollectionObject._doc;
+      collectionDocument._id = collectionDocument._id.id.toString("hex");
+      resolve(collectionDocument);
     });
   });
 }

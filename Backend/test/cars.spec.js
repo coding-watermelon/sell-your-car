@@ -45,15 +45,16 @@ describe("Cars ", () => {
 
       Promise.all(cars.map(car => resources.cars.create(car))).then(
         databaseCarItems => {
-          console.log(databaseCarItems);
           chai
             .request(app)
             .get(route)
             .end((err, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.be.an("array").that.is.not.empty;
-              console.log(res.body);
-              expect(res.body).to.deep.equal(cars);
+              for (var i = 0; i < databaseCarItems.length; i++) {
+                expect(res.body).to.deep.include(databaseCarItems[i]);
+              }
+              expect(res.body).to.have.lengthOf(databaseCarItems.length);
               done();
             });
         }

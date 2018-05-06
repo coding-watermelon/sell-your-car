@@ -4,7 +4,13 @@ const database = require("./database");
 
 // Return all existing cars
 app.get("/cars", (req, res) => {
-  res.send([]);
+  database.resources.cars
+    .get()
+    .then(cars => res.send(cars))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(505);
+    });
 });
 
 // Return one specific car
