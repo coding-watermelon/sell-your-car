@@ -3,10 +3,11 @@ import React from 'react';
 import Container from '../Styled/Container';
 import TextField from 'material-ui/TextField';
 import { media } from '../Styled/mediaStyles';
-import { orange500, orange200, green500 } from 'material-ui/styles/colors';
+import { green500 } from 'material-ui/styles/colors';
 
 type PropsType = {
-  dark?: boolean,
+  onChange?: string => void,
+  value?: string,
 };
 
 const TopContainer = Container.extend`
@@ -40,7 +41,11 @@ const textFieldStyles = {
   fontWeight: 100,
 };
 
-export default class TopBar extends React.Component<{}> {
+export default class TopBar extends React.Component<PropsType> {
+  static defaultProps = {
+    onChange: (newValue: string) => {},
+    value: '',
+  };
   render() {
     return (
       <TopContainer>
@@ -54,6 +59,8 @@ export default class TopBar extends React.Component<{}> {
             inputStyle={textFieldStyles}
             underlineShow={true}
             fullWidth={true}
+            onChange={(_, newValue: string) => this.props.onChange(newValue)}
+            value={this.props.value}
           />
         </SearchWrapper>
       </TopContainer>
