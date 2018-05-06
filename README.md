@@ -37,3 +37,22 @@ or if you prefer npm
 cd Backend
 npm run test
 ```
+
+## Backend
+
+### Technology-Stack
+
+* React
+* Redux
+
+### Run
+
+Go to Folder _frontend_ and execute `yarn start` or `npm run start`
+
+### Build
+
+To create a deliverable application go to Folder _frontend_ and execute `yarn build --production` or `npm run build --production`
+
+### Tests
+
+Go to Folder _frontend_ and execute `yarn test` or `npm run test`
