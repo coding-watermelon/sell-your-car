@@ -4,6 +4,8 @@ sudo: false
 services:
   - mongodb
 install:
-  - cd Backend && yarn
+  - cd Backend
+  - yarn
 script:
-  - cd Backend && yarn test
+  - cd Backend 
+  - yarn test
