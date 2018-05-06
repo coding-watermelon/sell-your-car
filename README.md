@@ -38,7 +38,7 @@ cd Backend
 npm run test
 ```
 
-## Backend
+## Frontend
 
 ### Technology-Stack
 
