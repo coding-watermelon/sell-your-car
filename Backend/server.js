@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
+const database = require("./database");
 
 // Return all existing cars
 app.get("/cars", (req, res) => {
-  res.send({});
+  res.send([]);
 });
 
 // Return one specific car
@@ -16,6 +17,13 @@ app.post("/cars", (req, res) => {
   res.send({});
 });
 
-app.listen(3000, () =>
-  console.log("Sell your car backend listening on port 3000!")
-);
+module.exports = database
+  .connect()
+  .then(() => {
+    console.info("Connected to Database");
+    const server = app.listen(3000, () =>
+      console.info("Sell your car backend listening on port 3000!")
+    );
+    return server;
+  })
+  .catch(console.error);
