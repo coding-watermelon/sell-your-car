@@ -1,11 +1,12 @@
 language: node_js
+node_js:
+  - "node"
 dist: trusty
 sudo: false
 services:
   - mongodb
-install:
-  - cd Backend
-  - yarn
 script:
+  - ls 
   - cd Backend 
+  - yarn
   - yarn test
