@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.get("/cars", (req, res) => {
   database.resources.cars
     .get()
-    .then(cars => res.send(cars))
+    .then(cars => res.send({}))
     .catch(err => {
       console.error(err);
       res.sendStatus(505);
