@@ -6,8 +6,8 @@ import { media } from '../Styled/mediaStyles';
 import { green500 } from 'material-ui/styles/colors';
 
 type PropsType = {
-  onChange?: string => void,
-  value?: string,
+  onChange: string => void,
+  value: string,
 };
 
 const TopContainer = Container.extend`
@@ -17,7 +17,6 @@ const TopContainer = Container.extend`
   height: auto;
   z-index: 10;
   width: 100%;
-  background: ${(props: PropsType) => (props.dark ? '#4079d6e0' : 'none')};
 
   ${media.desktop`
     width: initial;
