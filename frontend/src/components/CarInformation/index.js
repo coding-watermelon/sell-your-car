@@ -11,6 +11,7 @@ const CardContainer = Container.extend`
   height: initial;
   width: calc(100% - 2rem);
   padding: 1rem;
+  display: inline-table;
 
   ${media.desktop`
     width: 25%;
