@@ -95,4 +95,50 @@ describe("Cars ", () => {
         });
     });
   });
+
+  describe("POST /cars", () => {
+    it("should create an new Car and return it", done => {
+      const route = "/cars";
+      const car = carFactory.cars(1);
+
+      chai
+        .request(app)
+        .post(route)
+        .send(car)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an("object");
+          expect(res.body).to.include.all.keys(
+            "_id",
+            "__v",
+            "headline",
+            "type",
+            "description",
+            "price"
+          );
+
+          // Get carItem from Database
+          resources.cars.get(res.body._id).then(databaseCarItem => {
+            expect(res.body).to.deep.equal(databaseCarItem);
+            done();
+          });
+        });
+    });
+
+    it("should return status 501 for a wrong post body", done => {
+      const route = "/cars";
+      const car = carFactory.cars(1);
+      car.price = "12345";
+      delete car.headline;
+
+      chai
+        .request(app)
+        .post(route)
+        .send(car)
+        .end((err, res) => {
+          expect(res).to.have.status(501);
+          done();
+        });
+    });
+  });
 });
