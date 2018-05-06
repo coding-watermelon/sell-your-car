@@ -1,7 +1,11 @@
 const express = require("express");
-const app = express();
+const validate = require("express-validation");
+const Joi = require("joi");
+const bodyParser = require("body-parser");
 const database = require("./database");
 
+const app = express();
+app.use(bodyParser.json());
 // Return all existing cars
 app.get("/cars", (req, res) => {
   database.resources.cars
@@ -31,9 +35,28 @@ app.get("/cars/:carId", (req, res) => {
 });
 
 // Create a new car
-app.post("/cars", (req, res) => {
-  res.send({});
-});
+app.post(
+  "/cars",
+  validate({
+    body: {
+      headline: Joi.string().required(),
+      type: Joi.string().required(),
+      description: Joi.string().required(),
+      price: Joi.number().required()
+    }
+  }),
+  (req, res) => {
+    database.resources.cars
+      .create(req.body)
+      .then(car => {
+        res.send(car);
+      })
+      .catch(err => {
+        console.error(err);
+        res.sendStatus(505);
+      });
+  }
+);
 
 module.exports = database
   .connect()

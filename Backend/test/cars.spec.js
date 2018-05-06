@@ -118,10 +118,15 @@ describe("Cars ", () => {
           );
 
           // Get carItem from Database
-          resources.cars.get(res.body._id).then(databaseCarItem => {
-            expect(res.body).to.deep.equal(databaseCarItem);
-            done();
-          });
+          resources.cars
+            .get(res.body._id)
+            .then(databaseCarItem => {
+              // Necessary because _id is an Object of type ObjectId (Mongo Internals) => Therefore id has to be converted
+              const expectedCar = JSON.parse(JSON.stringify(databaseCarItem));
+              expect(res.body).to.deep.equal(expectedCar);
+              done();
+            })
+            .catch(() => console.error("err"));
         });
     });
 
