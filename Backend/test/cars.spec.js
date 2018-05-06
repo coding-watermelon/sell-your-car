@@ -1,19 +1,17 @@
-process.env.NODE_ENV = "test";
+process.env.NODE_ENV = 'test';
 
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-const carFactory = require("./carFactory");
-const { resources, disconnect } = require("../database");
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const carFactory = require('./carFactory');
+const { resources } = require('../database');
 const expect = chai.expect;
 
-const server = require("../server");
+const server = require('../server');
 let app;
 
 chai.use(chaiHttp);
 
-describe("Cars ", () => {
-  let userId;
-
+describe('Cars ', () => {
   before(done => {
     server.then(_app => {
       app = _app;
@@ -25,22 +23,22 @@ describe("Cars ", () => {
     resources.cars.removeAll().then(() => done());
   });
 
-  describe("GET /cars", () => {
-    it("should return an empty list of cars", done => {
-      const route = "/cars";
+  describe('GET /cars', () => {
+    it('should return an empty list of cars', done => {
+      const route = '/cars';
 
       chai
         .request(app)
         .get(route)
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body).to.be.an("array").that.is.empty;
+          expect(res.body).to.be.an('array').that.is.empty;
           done();
         });
     });
 
-    it("should return a list of cars", done => {
-      const route = "/cars";
+    it('should return a list of cars', done => {
+      const route = '/cars';
       const cars = carFactory.cars(3);
 
       Promise.all(cars.map(car => resources.cars.create(car))).then(
@@ -50,8 +48,8 @@ describe("Cars ", () => {
             .get(route)
             .end((err, res) => {
               expect(res).to.have.status(200);
-              expect(res.body).to.be.an("array").that.is.not.empty;
-              for (var i = 0; i < databaseCarItems.length; i++) {
+              expect(res.body).to.be.an('array').that.is.not.empty;
+              for (let i = 0; i < databaseCarItems.length; i++) {
                 expect(res.body).to.deep.include(databaseCarItems[i]);
               }
               expect(res.body).to.have.lengthOf(databaseCarItems.length);
@@ -62,9 +60,9 @@ describe("Cars ", () => {
     });
   });
 
-  describe("GET /cars/:id", () => {
-    it("should return an object of the requested car", done => {
-      const route = "/cars";
+  describe('GET /cars/:id', () => {
+    it('should return an object of the requested car', done => {
+      const route = '/cars';
       const car = carFactory.cars(1);
 
       resources.cars.create(car).then(databaseCarItem => {
@@ -73,16 +71,16 @@ describe("Cars ", () => {
           .get(`${route}/${databaseCarItem._id}`)
           .end((err, res) => {
             expect(res).to.have.status(200);
-            expect(res.body).to.be.an("object");
+            expect(res.body).to.be.an('object');
             expect(res.body).to.deep.equal(databaseCarItem);
             done();
           });
       });
     });
 
-    it("should return status 418 for a non existing car", done => {
-      const route = "/cars";
-      const nonExistingId = "5aef28714dab94200e83a316";
+    it('should return status 418 for a non existing car', done => {
+      const route = '/cars';
+      const nonExistingId = '5aef28714dab94200e83a316';
 
       chai
         .request(app)
@@ -96,9 +94,9 @@ describe("Cars ", () => {
     });
   });
 
-  describe("POST /cars", () => {
-    it("should create an new Car and return it", done => {
-      const route = "/cars";
+  describe('POST /cars', () => {
+    it('should create an new Car and return it', done => {
+      const route = '/cars';
       const car = carFactory.cars(1);
 
       chai
@@ -107,14 +105,14 @@ describe("Cars ", () => {
         .send(car)
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body).to.be.an("object");
+          expect(res.body).to.be.an('object');
           expect(res.body).to.include.all.keys(
-            "_id",
-            "__v",
-            "headline",
-            "type",
-            "description",
-            "price"
+            '_id',
+            '__v',
+            'headline',
+            'type',
+            'description',
+            'price'
           );
 
           // Get carItem from Database
@@ -126,14 +124,14 @@ describe("Cars ", () => {
               expect(res.body).to.deep.equal(expectedCar);
               done();
             })
-            .catch(() => console.error("err"));
+            .catch(() => console.error('err'));
         });
     });
 
-    it("should return status 400 for a wrong post body", done => {
-      const route = "/cars";
+    it('should return status 400 for a wrong post body', done => {
+      const route = '/cars';
       const car = carFactory.cars(1);
-      car.price = "12345";
+      car.price = '12345';
       delete car.headline;
 
       chai

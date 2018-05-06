@@ -1,13 +1,13 @@
-const express = require("express");
-const validate = require("express-validation");
-const Joi = require("joi");
-const bodyParser = require("body-parser");
-const database = require("./database");
+const express = require('express');
+const validate = require('express-validation');
+const Joi = require('joi');
+const bodyParser = require('body-parser');
+const database = require('./database');
 
 const app = express();
 app.use(bodyParser.json());
 // Return all existing cars
-app.get("/cars", (req, res) => {
+app.get('/cars', (req, res) => {
   database.resources.cars
     .get()
     .then(cars => res.send(cars))
@@ -18,7 +18,7 @@ app.get("/cars", (req, res) => {
 });
 
 // Return one specific car
-app.get("/cars/:carId", (req, res) => {
+app.get('/cars/:carId', (req, res) => {
   database.resources.cars
     .get(req.params.carId)
     .then(car => {
@@ -36,14 +36,14 @@ app.get("/cars/:carId", (req, res) => {
 
 // Create a new car
 app.post(
-  "/cars",
+  '/cars',
   validate({
     body: {
       headline: Joi.string().required(),
       type: Joi.string().required(),
       description: Joi.string().required(),
-      price: Joi.number().required()
-    }
+      price: Joi.number().required(),
+    },
   }),
   (req, res) => {
     database.resources.cars
@@ -61,9 +61,9 @@ app.post(
 module.exports = database
   .connect()
   .then(() => {
-    console.info("Connected to Database");
+    console.info('Connected to Database');
     const server = app.listen(3000, () =>
-      console.info("Sell your car backend listening on port 3000!")
+      console.info('Sell your car backend listening on port 3000!')
     );
     return server;
   })
