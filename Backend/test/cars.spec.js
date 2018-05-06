@@ -125,7 +125,7 @@ describe("Cars ", () => {
         });
     });
 
-    it("should return status 501 for a wrong post body", done => {
+    it("should return status 400 for a wrong post body", done => {
       const route = "/cars";
       const car = carFactory.cars(1);
       car.price = "12345";
@@ -136,7 +136,7 @@ describe("Cars ", () => {
         .post(route)
         .send(car)
         .end((err, res) => {
-          expect(res).to.have.status(501);
+          expect(res).to.have.status(400);
           done();
         });
     });
