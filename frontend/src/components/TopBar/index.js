@@ -22,10 +22,6 @@ type TopBarPropsType = {
 
 export default class TopBar extends React.Component<TopBarPropsType, {}> {
   render() {
-    return (
-      <TopContainer dark={this.props.dark}>
-        <Label fontSize={'large'}>Car Market</Label>
-      </TopContainer>
-    );
+    return <TopContainer dark={this.props.dark} />;
   }
 }
