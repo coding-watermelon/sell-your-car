@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17"
+  },
+  "name": "Backend",
+  "version": "1.0.0",
+  "description": "Backend for the carMarketplace",
+  "main": "server.js",
+  "repository": "https://github.com/PetrykowskiM/sell-your-car",
+  "author": "Markus Petrykowski",
+  "license": "MIT"
+}
