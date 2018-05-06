@@ -1,0 +1,9 @@
+language: node_js
+dist: trusty
+sudo: false
+services:
+  - mongodb
+install:
+  - cd Backend && yarn
+script:
+  - cd Backend && yarn test
