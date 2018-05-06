@@ -6,7 +6,8 @@ sudo: false
 services:
   - mongodb
 script:
-  - ls 
+  - yarn
+  - yarn lint
   - cd Backend 
   - yarn
   - yarn test
