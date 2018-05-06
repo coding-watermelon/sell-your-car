@@ -21,7 +21,7 @@ describe("Cars ", () => {
     });
   });
 
-  after(done => {
+  afterEach(done => {
     resources.cars.removeAll().then(() => done());
   });
 
@@ -59,6 +59,38 @@ describe("Cars ", () => {
             });
         }
       );
+    });
+  });
+
+  describe("GET /cars/:id", () => {
+    it("should return an object of the requested car", done => {
+      const route = "/cars";
+      const car = carFactory.cars(1);
+
+      resources.cars.create(car).then(databaseCarItem => {
+        chai
+          .request(app)
+          .get(`${route}/${databaseCarItem._id}`)
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.deep.equal(databaseCarItem);
+            done();
+          });
+      });
+    });
+
+    it("should return status 418 for a non existing id", done => {
+      const route = "/cars";
+      const nonExistingId = 12345;
+
+      chai
+        .request(app)
+        .get(`${route}/${nonExistingId}`)
+        .end((err, res) => {
+          expect(res).to.have.status(418);
+          done();
+        });
     });
   });
 });
