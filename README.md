@@ -1,4 +1,4 @@
-# Sell-Your-Car
+# Sell-Your-Car &middot; [![Build Status](https://travis-ci.org/PetrykowskiM/sell-your-car.svg?branch=master)](https://travis-ci.org/PetrykowskiM/sell-your-car)
 
 A demo application to add cars online.
 
