@@ -14,7 +14,7 @@ class Marketplace extends Component<{}> {
         <Container position={'absolute'} top={'0'}>
           <TopBar />
           <Container>
-            <CarCreation />
+            <CarCreation add={() => {}} />
             <CarInformation
               type={'Audi'}
               description="Lorem Ipsum dolor sit amet, asdfkhasdjfh,d adfjh dhjsakh djasdjhf hdkjh djs dh hasjdoue dhjsk.!"
