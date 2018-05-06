@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "joi": "^13.2.0",
     "mongoose": "^5.0.17"
   },
   "name": "Backend",
@@ -11,8 +13,7 @@
   "author": "Markus Petrykowski",
   "license": "MIT",
   "scripts": {
-    "start-dev":
-      "CHOKIDAR_USEPOLLING=true supervisor -w Resources database server.js",
+    "start-dev": "CHOKIDAR_USEPOLLING=true supervisor -w Resources database server.js",
     "start": "node server.js",
     "test": "mocha --recursive --timeout 5000 --exit"
   },
