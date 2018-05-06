@@ -14,7 +14,7 @@ const CardContainer = Container.extend`
   display: inline-table;
 
   ${media.desktop`
-    width: 25%;
+    width: calc( 25% - 2rem );
   `};
 `;
 

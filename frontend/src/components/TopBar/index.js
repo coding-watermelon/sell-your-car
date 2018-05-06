@@ -35,8 +35,8 @@ const SearchWrapper = Container.extend`
 
 const textFieldStyles = {
   borderColor: green500,
-  color: 'white',
-  fontSize: '24px',
+  color: 'black',
+  fontSize: '18px',
   fontWeight: 100,
 };
 
