@@ -1,7 +1,7 @@
 // @flow
-import styled from "styled-components";
-import { media } from "../mediaStyles";
-import Container from "./";
+import styled from 'styled-components';
+import { media } from '../mediaStyles';
+import Container from './';
 
 const CenteredContent = Container.extend`
   width: auto;

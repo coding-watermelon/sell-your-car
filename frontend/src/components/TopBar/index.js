@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Container from '../Styled/Container';
-import Label from '../Styled/Text/Label';
 
 type PropsType = {
   dark?: boolean,
