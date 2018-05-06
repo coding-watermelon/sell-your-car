@@ -1,0 +1,11 @@
+[ignore]
+#<PROJECT_ROOT>/node_modules/.*
+.*/node_modules/styled-components/src/.*
+.*/node_modules/chalk/.*
+
+[include]
+
+[libs]
+node_modules/*
+
+[options]
