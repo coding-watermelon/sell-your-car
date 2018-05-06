@@ -14,8 +14,20 @@ app.get("/cars", (req, res) => {
 });
 
 // Return one specific car
-app.get("/cars/:id", (req, res) => {
-  res.send({});
+app.get("/cars/:carId", (req, res) => {
+  database.resources.cars
+    .get(req.params.carId)
+    .then(car => {
+      if (car) {
+        res.send(car);
+      } else {
+        res.sendStatus(418);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(505);
+    });
 });
 
 // Create a new car

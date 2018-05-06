@@ -22,6 +22,7 @@ function cars(amount) {
   for (var i = 0; i < amount; i++) {
     cars.push(createRandomCar());
   }
+  if (amount === 1) return cars[0];
   return cars;
 }
 

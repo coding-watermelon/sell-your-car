@@ -19,7 +19,7 @@ module.exports = {
 
 function get(carId) {
   if (carId) {
-    return getCarById(id);
+    return getCarById(carId);
   } else {
     return getAllCars();
   }

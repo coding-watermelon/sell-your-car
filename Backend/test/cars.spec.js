@@ -80,9 +80,9 @@ describe("Cars ", () => {
       });
     });
 
-    it("should return status 418 for a non existing id", done => {
+    it("should return status 418 for a non existing car", done => {
       const route = "/cars";
-      const nonExistingId = 12345;
+      const nonExistingId = "5aef28714dab94200e83a316";
 
       chai
         .request(app)
