@@ -10,6 +10,17 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// API Data
+import * as api from './api';
+import { addCar } from './reducers/cars';
+
+// fetch initial data
+api.fetchCars().then(cars => {
+  cars.forEach(car => {
+    store.dispatch(addCar(car));
+  });
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
