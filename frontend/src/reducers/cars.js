@@ -1,4 +1,6 @@
 // @flow
+import type { ReduxActionType } from './';
+
 type CarType = {
   headline: string,
   type: string,
@@ -12,7 +14,6 @@ export const addCar = (car: CarType) => ({
   payload: car,
 });
 
-type ReduxActionType = { type: string, payload?: {} };
 type CarActionType = { type: 'ADD_CAR', payload: CarType };
 type CarStateType = CarType[];
 
