@@ -7,12 +7,18 @@ import CarInformation from '../components/CarInformation';
 import CarCreation from '../components/CarCreationCard';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class Marketplace extends Component<{}> {
+type PropsType = {
+  setFilter: string => void,
+  filter: string,
+  car: {}[],
+};
+
+class Marketplace extends Component<PropsType> {
   render() {
     return (
       <MuiThemeProvider>
         <Container position={'absolute'} top={'0'}>
-          <TopBar />
+          <TopBar onChange={this.props.setFilter} value={this.props.filter} />
           <Container>
             <CarCreation add={() => {}} />
             {this.props.cars.map(car => <CarInformation {...car} />)}
