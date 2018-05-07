@@ -25,7 +25,65 @@ type PropsType = {
   add: CarType => void,
 };
 
-export default class CarInformation extends React.Component<PropsType> {
+type StateItemType<ValueType> = {
+  value: ValueType,
+  showError: boolean,
+};
+type StateType = {
+  headline: StateItemType<string>,
+  type: StateItemType<string>,
+  price: StateItemType<number>,
+  description: StateItemType<string>,
+};
+
+export default class CarInformation extends React.Component<
+  PropsType,
+  StateType
+> {
+  state = {
+    Headline: { value: '', showError: false },
+    Type: { value: '', showError: false },
+    Price: { value: null, showError: false },
+    Description: { value: '', showError: false },
+  };
+
+  createCar = () => {
+    const isFormValid = Object.keys(this.state).reduce(
+      (previousValue: boolean, currentKey: string) => {
+        const isCurrentKeyValid = this.state[currentKey].value;
+        if (!isCurrentKeyValid) {
+          this.setState({
+            [currentKey]: {
+              ...this.state[currentKey],
+              showError: true,
+            },
+          });
+        }
+        return previousValue && isCurrentKeyValid;
+      },
+      true
+    );
+    if (!isFormValid) {
+      return;
+    }
+    this.props.add(this.state);
+    this.setState({
+      headline: { value: '', showError: false },
+      type: { value: '', showError: false },
+      price: { value: 0, showError: false },
+      description: { value: '', showError: false },
+    });
+  };
+
+  setValue = (key: string, value: string) => {
+    this.setState({
+      [key]: {
+        ...this.state[key],
+        value,
+      },
+    });
+  };
+
   render() {
     return (
       <CardContainer>
@@ -38,13 +96,24 @@ export default class CarInformation extends React.Component<PropsType> {
             showExpandableButton={true}
           />
           <CardText expandable={true}>
-            <TextField hintText="Headline" fullWidth />
-            <TextField hintText="Type" fullWidth />
-            <TextField hintText="Price" type="number" fullWidth />
-            <TextField hintText="Description" fullWidth />
+            {Object.keys(this.state).map((key: string) => {
+              return (
+                <TextField
+                  key={key}
+                  hintText={key}
+                  errorText={
+                    this.state[key].showError ? 'This field is required' : null
+                  }
+                  fullWidth
+                  type={key === 'price' ? 'number' : 'text'}
+                  value={this.state[key].value || ''}
+                  onChange={(_, newValue) => this.setValue(key, newValue)}
+                />
+              );
+            })}
           </CardText>
           <CardActions expandable={true}>
-            <FlatButton label="Add" onClick={this.props.add} />
+            <FlatButton label="Add" onClick={() => this.createCar()} />
           </CardActions>
         </Card>
       </CardContainer>
