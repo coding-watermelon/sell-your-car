@@ -13,5 +13,12 @@ export const fetchCars = () => {
 };
 
 export const postCar = (car: CarType) => {
-  return fetch(`${apiHost}/cars`).then(res => res.json());
+  return fetch(`${apiHost}/cars`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(car),
+  }).then(res => res.json());
 };
