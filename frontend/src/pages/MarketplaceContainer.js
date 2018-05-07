@@ -5,25 +5,28 @@ import Marketplace from './Marketplace';
 // actions
 import { addCar } from '../reducers/cars';
 import { setFilter } from '../reducers/filter';
-import { postCar } from '../api';
+import { postCar, type CarType } from '../api';
 
-const addNewCar = car => {
-  return dispatch => {
+import type { Dispatch } from 'redux';
+import type { StateType } from '../reducers';
+
+const addNewCar = (car: CarType) => {
+  return (dispatch: Dispatch) => {
     postCar(car).then(newCar => dispatch(addCar(newCar)));
   };
 };
 
-const mapStateToProps = (state, _ownProps) => ({
+const mapStateToProps = (state: StateType) => ({
   cars: state.cars,
   filter: state.filter,
 });
 
-const mapDispatchToProps = (dispatch, _ownProps) => ({
-  onAddCar: car => {
-    dispatch(addNewCar(car));
-  },
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   setFilter: (filter: string) => {
     dispatch(setFilter(filter));
+  },
+  onAddCar: (car: CarType) => {
+    dispatch(addNewCar(car));
   },
 });
 

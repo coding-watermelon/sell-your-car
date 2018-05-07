@@ -12,6 +12,7 @@ type PropsType = {
   setFilter: string => void,
   filter: string,
   cars: CarType[],
+  onAddCar: CarType => void,
 };
 
 class Marketplace extends Component<PropsType> {
@@ -21,7 +22,7 @@ class Marketplace extends Component<PropsType> {
         <Container position={'absolute'} top={'0'}>
           <TopBar onChange={this.props.setFilter} value={this.props.filter} />
           <Container>
-            <CarCreation add={() => {}} />
+            <CarCreation add={this.props.onAddCar} />
             {this.props.cars.map(car => <CarInformation {...car} />)}
           </Container>
         </Container>

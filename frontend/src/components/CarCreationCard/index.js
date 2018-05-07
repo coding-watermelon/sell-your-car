@@ -5,6 +5,7 @@ import { media } from '../Styled/mediaStyles';
 import FlatButton from 'material-ui/FlatButton';
 import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
+import type { CarType } from '../../api';
 
 // Assets
 import addIcon from '../../assets/add.png';
@@ -21,7 +22,7 @@ const CardContainer = Container.extend`
 `;
 
 type PropsType = {
-  add: () => void,
+  add: CarType => void,
 };
 
 export default class CarInformation extends React.Component<PropsType> {
