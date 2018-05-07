@@ -43,7 +43,7 @@ export default class CarInformation extends React.Component<
   state = {
     Headline: { value: '', showError: false },
     Type: { value: '', showError: false },
-    Price: { value: null, showError: false },
+    Price: { value: 0, showError: false },
     Description: { value: '', showError: false },
   };
 
