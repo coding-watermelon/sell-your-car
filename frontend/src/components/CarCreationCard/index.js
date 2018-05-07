@@ -49,7 +49,8 @@ export default class CarInformation extends React.Component<
 
   createCar = () => {
     const isFormValid = Object.keys(this.state).reduce(
-      (previousValue: boolean, currentKey: string) => {
+      // $FlowFixMe
+      (previousValue: string, currentKey: string) => {
         const isCurrentKeyValid = this.state[currentKey].value;
         if (!isCurrentKeyValid) {
           this.setState({
@@ -66,16 +67,17 @@ export default class CarInformation extends React.Component<
     if (!isFormValid) {
       return;
     }
-    const newCar = {};
-    Object.keys(this.state).forEach((key: string) => {
-      newCar[key.toLowerCase()] = this.state[key].value;
+    this.props.add({
+      headline: this.state.Headline.value,
+      type: this.state.Type.value,
+      price: this.state.Price.value,
+      description: this.state.Description.value,
     });
-    this.props.add(newCar);
     this.setState({
-      headline: { value: '', showError: false },
-      type: { value: '', showError: false },
-      price: { value: 0, showError: false },
-      description: { value: '', showError: false },
+      Headline: { value: '', showError: false },
+      Type: { value: '', showError: false },
+      Price: { value: 0, showError: false },
+      Description: { value: '', showError: false },
     });
   };
 
