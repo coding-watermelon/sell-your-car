@@ -2,10 +2,12 @@ const express = require('express');
 const validate = require('express-validation');
 const Joi = require('joi');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const database = require('./database');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 // Return all existing cars
 app.get('/cars', (req, res) => {
   database.resources.cars
@@ -62,7 +64,7 @@ module.exports = database
   .connect()
   .then(() => {
     console.info('Connected to Database');
-    const server = app.listen(3000, () =>
+    const server = app.listen(3030, () =>
       console.info('Sell your car backend listening on port 3000!')
     );
     return server;
