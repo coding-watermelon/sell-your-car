@@ -30,10 +30,10 @@ type StateItemType<ValueType> = {
   showError: boolean,
 };
 type StateType = {
-  headline: StateItemType<string>,
-  type: StateItemType<string>,
-  price: StateItemType<number>,
-  description: StateItemType<string>,
+  Headline: StateItemType<string>,
+  Type: StateItemType<string>,
+  Price: StateItemType<number>,
+  Description: StateItemType<string>,
 };
 
 export default class CarInformation extends React.Component<
@@ -66,7 +66,11 @@ export default class CarInformation extends React.Component<
     if (!isFormValid) {
       return;
     }
-    this.props.add(this.state);
+    const newCar = {};
+    Object.keys(this.state).forEach((key: string) => {
+      newCar[key.toLowerCase()] = this.state[key].value;
+    });
+    this.props.add(newCar);
     this.setState({
       headline: { value: '', showError: false },
       type: { value: '', showError: false },
