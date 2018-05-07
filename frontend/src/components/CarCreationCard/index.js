@@ -49,7 +49,7 @@ export default class CarInformation extends React.Component<
 
   createCar = () => {
     const isFormValid = Object.keys(this.state).reduce(
-      // $FlowFixMe
+      // $FlowFixMe Mixed types do not work for flow
       (previousValue: string, currentKey: string) => {
         const isCurrentKeyValid = this.state[currentKey].value;
         if (!isCurrentKeyValid) {
