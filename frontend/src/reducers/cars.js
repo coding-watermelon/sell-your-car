@@ -12,10 +12,14 @@ export const addCar = (car: CarType) => ({
   payload: car,
 });
 
+type ReduxActionType = { type: string, payload?: {} };
 type CarActionType = { type: 'ADD_CAR', payload: CarType };
 type CarStateType = CarType[];
 
-const cars = (state: CarStateType = [], action: CarActionType) => {
+const cars = (
+  state: CarStateType = [],
+  action: CarActionType | ReduxActionType
+) => {
   switch (action.type) {
     case ADD_CAR:
       return [...state, action.payload];

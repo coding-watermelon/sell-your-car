@@ -15,7 +15,7 @@ describe('actions', () => {
 
 describe('reducer cars', () => {
   it('should return the initial state', () => {
-    expect(cars(undefined, {})).toEqual([]);
+    expect(cars(undefined, { type: 'UNRELATED_ACTION' })).toEqual([]);
   });
 
   it('should handle ADD_CAR', () => {
