@@ -15,24 +15,7 @@ class Marketplace extends Component<{}> {
           <TopBar />
           <Container>
             <CarCreation add={() => {}} />
-            <CarInformation
-              type={'Audi'}
-              description="Lorem Ipsum dolor sit amet, asdfkhasdjfh,d adfjh dhjsakh djasdjhf hdkjh djs dh hasjdoue dhjsk.!"
-              headline="Great Headline!"
-              price={200000}
-            />
-            <CarInformation
-              type={'Audi'}
-              description="Lorem Ipsum dolor sit amet, asdfkhasdjfh,d adfjh dhjsakh djasdjhf hdkjh djs dh hasjdoue dhjsk.!"
-              headline="Great Headline!"
-              price={200000}
-            />
-            <CarInformation
-              type={'Audi'}
-              description="Lorem Ipsum dolor sit amet, asdfkhasdjfh,d adfjh dhjsakh djasdjhf hdkjh djs dh hasjdoue dhjsk.!"
-              headline="Great Headline!"
-              price={200000}
-            />
+            {this.props.cars.map(car => <CarInformation {...car} />)}
           </Container>
         </Container>
       </MuiThemeProvider>
