@@ -6,7 +6,6 @@ import TopBar from '../components/TopBar';
 import CarList from '../container/CarList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import type { CarType } from '../api';
 type PropsType = {
   setFilter: string => void,
   filter: string,
