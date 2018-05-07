@@ -8,9 +8,10 @@ export const setFilter = (filter: string) => ({
 });
 
 type FilterActionType = { type: 'SET_FILTER', payload: string };
+export type FilterStateType = string;
 
 const filter = (
-  state: string = '',
+  state: FilterStateType = '',
   action: ReduxActionType | FilterActionType
 ) => {
   switch (action.type) {

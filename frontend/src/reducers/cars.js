@@ -9,7 +9,7 @@ export const addCar = (car: CarType) => ({
 });
 
 type CarActionType = { type: 'ADD_CAR', payload: CarType };
-type CarStateType = CarType[];
+export type CarStateType = CarType[];
 
 const cars = (
   state: CarStateType = [],
