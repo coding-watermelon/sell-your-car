@@ -17,7 +17,14 @@ const addNewCar = (car: CarType) => {
 };
 
 const mapStateToProps = (state: StateType) => ({
-  cars: state.cars,
+  cars: state.cars.filter((car: CarType) => {
+    return (
+      car.headline.includes(state.filter) ||
+      car.type.includes(state.filter) ||
+      car.description.includes(state.filter) ||
+      (car.price + '').includes(state.filter)
+    );
+  }),
   filter: state.filter,
 });
 
