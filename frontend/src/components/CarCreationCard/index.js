@@ -35,7 +35,6 @@ export default class CarInformation extends React.Component<PropsType> {
             avatar={addIcon}
             actAsExpander={true}
             showExpandableButton={true}
-            initiallyExpanded
           />
           <CardText expandable={true}>
             <TextField hintText="Headline" fullWidth />
