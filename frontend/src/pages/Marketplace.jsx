@@ -23,7 +23,9 @@ class Marketplace extends Component<PropsType> {
           <TopBar onChange={this.props.setFilter} value={this.props.filter} />
           <Container>
             <CarCreation add={this.props.onAddCar} />
-            {this.props.cars.map(car => <CarInformation {...car} />)}
+            {this.props.cars.map((car: CarType, index: number) => (
+              <CarInformation key={index} {...car} />
+            ))}
           </Container>
         </Container>
       </MuiThemeProvider>
