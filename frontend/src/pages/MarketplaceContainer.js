@@ -19,10 +19,10 @@ const addNewCar = (car: CarType) => {
 const mapStateToProps = (state: StateType) => ({
   cars: state.cars.filter((car: CarType) => {
     return (
-      car.headline.includes(state.filter) ||
-      car.type.includes(state.filter) ||
-      car.description.includes(state.filter) ||
-      (car.price + '').includes(state.filter)
+      car.headline.toUpperCase().includes(state.filter.toUpperCase()) ||
+      car.type.toUpperCase().includes(state.filter.toUpperCase()) ||
+      car.description.toUpperCase().includes(state.filter.toUpperCase()) ||
+      (car.price + '').toUpperCase().includes(state.filter.toUpperCase())
     );
   }),
   filter: state.filter,
