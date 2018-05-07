@@ -15,8 +15,8 @@
     "styled-components": "^3.2.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "REACT_APP_BACKEND_HOST=localhost:3030 react-scripts start",
+    "build": "REACT_APP_BACKEND_HOST=backend:3000 react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow"
