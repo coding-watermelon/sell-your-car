@@ -1,12 +1,6 @@
 // @flow
 import type { ReduxActionType } from './';
-
-type CarType = {
-  headline: string,
-  type: string,
-  description: string,
-  price: number,
-};
+import type { CarType } from '../api';
 
 export const ADD_CAR = 'ADD_CAR';
 export const addCar = (car: CarType) => ({

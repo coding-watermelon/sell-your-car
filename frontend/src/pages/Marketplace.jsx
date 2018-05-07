@@ -7,10 +7,11 @@ import CarInformation from '../components/CarInformation';
 import CarCreation from '../components/CarCreationCard';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import type { CarType } from '../api';
 type PropsType = {
   setFilter: string => void,
   filter: string,
-  car: {}[],
+  cars: CarType[],
 };
 
 class Marketplace extends Component<PropsType> {
