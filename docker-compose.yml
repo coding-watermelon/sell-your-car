@@ -5,3 +5,35 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+  # Services -----------------------------------------------------------
+  marketplace-frontend:
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile
+      args:
+        - REACT_APP_BACKEND_HOST=localhost
+
+  marketplace-backend:
+    build:
+      context: ./
+      dockerfile: ./Backend/Dockerfile
+    links:
+      - database
+    environment:
+      - DB_HOST=database
+
+  # NGINX Server --------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    command: nginx -g 'daemon off;'
+    links:
+      - marketplace-frontend
+      - marketplace-backend
+    environment:
+      - NGINX_PORT=80
+    ports:
+      - 80:80
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - "./static:/usr/share/nginx/html/files"
+    
