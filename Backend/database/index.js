@@ -1,20 +1,21 @@
-const mongoose = require("mongoose");
-const cars = require("./cars");
+const mongoose = require('mongoose');
+const cars = require('./cars');
 
 let dbConnection = null;
 
 module.exports = {
   connect: connectToDatabase,
   resources: {
-    cars
-  }
+    cars,
+  },
 };
 
 function connectToDatabase() {
   return new Promise((resolve, reject) => {
-    mongoose.connect("mongodb://localhost/car_marketplace");
+    const dbHost = process.env.DB_HOST || 'localhost';
+    mongoose.connect('mongodb://' + dbHost + '/car_marketplace');
     dbConnection = mongoose.connection;
-    dbConnection.on("error", reject);
-    dbConnection.once("open", resolve);
+    dbConnection.on('error', reject);
+    dbConnection.once('open', resolve);
   });
 }
