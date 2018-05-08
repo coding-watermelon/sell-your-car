@@ -4,7 +4,7 @@ import { cars } from '../../test/carFactory';
 import CarList from './CarList';
 import CarCreation from '../../components/CarCreationCard';
 import CarInformation from '../../components/CarInformation';
-import { shallow } from 'enzyme';
+import { shallow, type Wrapper } from 'enzyme';
 
 describe('CarList', () => {
   it('should render correctly', () => {
@@ -23,7 +23,7 @@ describe('CarList', () => {
     // Check whether props are correctly passed through
     component
       .find(CarInformation)
-      .forEach((CarListItem: CarInformation, index: number) => {
+      .forEach((CarListItem: Wrapper, index: number) => {
         expect(CarListItem.props()).toEqual(carItems[index]);
       });
   });
