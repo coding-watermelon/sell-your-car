@@ -2,6 +2,8 @@
 
 A demo application to add cars online.
 
+![Mobile demo gif](./static/mobile-demo.gif 'MobileDemo')
+
 ## Thoughts regarding to...
 
 ### ...404 Pages and Page Views
