@@ -28,7 +28,7 @@ describe('CarListContainer', () => {
     expect(CarListComponent.props().cars).toEqual(carsState);
   });
 
-  it('should filter the carList correctly', () => {
+  it('should filter the carList for the headline correctly', () => {
     const carsState = cars(5);
     const uniqueHeadline = 'That is definitively a unique headline';
     carsState[0].headline = uniqueHeadline;
@@ -36,6 +36,30 @@ describe('CarListContainer', () => {
     // Set state appropriatly
     store.getState().cars = carsState;
     store.getState().filter = uniqueHeadline;
+    const component = mount(
+      <MuiThemeProvider>
+        <Provider store={store}>
+          <CarList />
+        </Provider>
+      </MuiThemeProvider>
+    );
+    const CarListComponent = component
+      .childAt(0)
+      .childAt(0)
+      .childAt(0);
+
+    expect(CarListComponent.props().cars).toHaveLength(1);
+    expect(CarListComponent.props().cars).toEqual([carsState[0]]);
+  });
+
+  it('should filter the carList for the price correctly', () => {
+    const carsState = cars(5);
+    const uniquePrice = 1234567891011;
+    carsState[0].price = uniquePrice;
+
+    // Set state appropriatly
+    store.getState().cars = carsState;
+    store.getState().filter = `${uniquePrice}`;
     const component = mount(
       <MuiThemeProvider>
         <Provider store={store}>
