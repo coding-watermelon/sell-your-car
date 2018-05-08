@@ -5,10 +5,13 @@ import CarList from './CarList';
 import CarCreation from '../../components/CarCreationCard';
 import CarInformation from '../../components/CarInformation';
 import { shallow, type ShallowWrapper } from 'enzyme';
+import type { CarType } from '../../api';
 
 describe('CarList', () => {
   it('should render correctly', () => {
-    const component = shallow(<CarList cars={[]} />);
+    const component = shallow(
+      <CarList cars={[]} onAddCar={(car: CarType) => {}} />
+    );
 
     expect(component.find(CarCreation)).toHaveLength(1);
     expect(component.find(CarInformation)).toHaveLength(0);
@@ -16,7 +19,9 @@ describe('CarList', () => {
 
   it('should render a list of cars', () => {
     const carItems = cars(3);
-    const component = shallow(<CarList cars={carItems} />);
+    const component = shallow(
+      <CarList cars={carItems} onAddCar={(car: CarType) => {}} />
+    );
 
     expect(component.find(CarInformation)).toHaveLength(3);
 

@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import Container from '../../components/Styled/Container';
 import CarInformation from '../../components/CarInformation';
 import CarCreation from '../../components/CarCreationCard';
 
-import type { CarType } from '../api';
+import type { CarType } from '../../api';
 type PropsType = {
   cars: CarType[],
   onAddCar: CarType => void,
