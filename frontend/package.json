@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "flow-bin": "^0.71.0",
     "flow-typed": "^2.4.0",
     "material-ui": "^0.20.0",
@@ -17,7 +19,7 @@
   "scripts": {
     "start": "REACT_APP_BACKEND_HOST=localhost:3030 react-scripts start",
     "build": "REACT_APP_BACKEND_HOST=backend:3000 react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "flow": "flow"
   }
