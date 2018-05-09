@@ -8,7 +8,7 @@ A demo application to add cars online.
 
 ## Table of Contents
 
-**[Thoughts about some questions](#thoughts-regarding-to...)**<br>
+**[Thoughts about some questions](#thoughts-regarding-to)**<br>
 **[Docker Setup](#docker-compose-setup)**<br> **[Database](#database)**<br>
 **[Backend](#backend)**<br> **[Frontend](#frontend)**<br>
 
