@@ -6,6 +6,12 @@ A demo application to add cars online.
   <img height="350" src="./static/mobile-demo.gif">
 </p>
 
+## Table of Contents
+
+**[Thoughts about some questions](#thoughts-regarding-to...)**<br>
+**[Docker Setup](#docker-compose-setup)**<br> **[Database](#database)**<br>
+**[Backend](#backend)**<br> **[Frontend](#frontend)**<br>
+
 ## Thoughts regarding to...
 
 ### ...404 Pages and Page Views
