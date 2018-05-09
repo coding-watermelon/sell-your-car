@@ -2,7 +2,9 @@
 
 A demo application to add cars online.
 
-![Mobile demo gif](./static/mobile-demo.gif 'MobileDemo')
+<p align="center">
+  <img height="350" src="./static/mobile-demo.gif">
+</p>
 
 ## Thoughts regarding to...
 
