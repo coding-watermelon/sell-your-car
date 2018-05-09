@@ -56,7 +56,7 @@ be able to respond with a 200-Status so it wont be reachable and fail directly.
 
 Now that we have our status routes, we could use a service that calls them on a
 regular basis and notifies us in some way. An example service could be
-[Uptimerobot](uptimerobot.com).
+[Uptimerobot](http://uptimerobot.com).
 
 ### ... Scalability
 
@@ -73,6 +73,16 @@ The use of the nginx also allows us to easily provide static content, which
 could either be provided by a static content docker container or by placing the
 static files on the running docker machine and mount that into the nginx docker
 container and let it being served by nginx directly.
+
+Examples can be loaded under following urls:
+
+* Localhost (if docker setup was started): [Cat Image](http://localhost/cat.jpg)
+  [Lorem Ipsum](http://localhost/lorem-ipsum.txt)
+* Example Deployment:
+  [Cat Image](http://carmarket.markus-petrykowski.de/cat.jpg)
+  [Lorem Ipsum](http://carmarket.markus-petrykowski.de/lorem-ipsum.txt)
+
+They serve the files from folder `./static`
 
 ## Docker Compose Setup
 
