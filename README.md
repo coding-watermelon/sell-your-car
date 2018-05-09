@@ -68,12 +68,57 @@ could either be provided by a static content docker container or by placing the
 static files on the running docker machine and mount that into the nginx docker
 container and let it being served by nginx directly.
 
+## Docker Compose Setup
+
+To run the setup completely I also provide a docker-compose setup. In order to
+run it, you need to make sure to have `docker` and `docker-compose` installed.
+Check their documentation on how to install it.
+
+Once you have a running docker version you need to build and run the images.
+Execute the following commands from the root directory:
+
+```
+docker-compose build
+docker-compose up
+```
+
+If the commands execute successfully you should see logs from the database, the
+frontend as well as the backend. **Make sure to have port 80 free on your local
+machine**. If not change the nginx-port in the docker-compose file from `80:80`
+to for example `8888:80`
+
+Visit (localhost)[http://localhost].
+
+## Database
+
+The backend runs with a MongoDB Database. It can be started from the root
+directory with
+
+```
+docker-compose up database
+```
+
+This starts the database and makes it available through the standard MongoDB
+Port `27017`.
+
 ## Backend
 
 ### Technology-Stack
 
 * MongoDB
 * Express-Server
+
+### Run
+
+Go to Folder _Backend_ and do the following:
+
+1.  Install Dependencies with `yarn` or `npm install`
+2.  The Backend needs a mongodb instance to connect with. You can either set an
+    environment variable on your computer to set the host with
+    `export DB_HOST=192.168.1.123` on mac. Otherwise you can also start the
+    database on your local machine by using the provided docker-compose setup.
+    See more in the Database section.
+3.  Start application with `yarn start` or `npm run start`
 
 ### Routes
 
@@ -115,7 +160,10 @@ npm run test
 
 ### Run
 
-Go to Folder _frontend_ and execute `yarn start` or `npm run start`
+Go to Folder _frontend_ and do the following:
+
+1.  Install Dependencies with `yarn` or `npm install`
+2.  Start application with `yarn start` or `npm run start`
 
 ### Build
 
@@ -124,4 +172,9 @@ To create a deliverable application go to Folder _frontend_ and execute
 
 ### Tests
 
-Go to Folder _frontend_ and execute `yarn test` or `npm run test`
+The frontend is provided with unit-tests. Go to Folder _frontend_ and execute
+`yarn test` or `npm run test`
+
+### Flow
+
+Go to Folder _frontend_ and execute `yarn flow` or `npm run flow`
